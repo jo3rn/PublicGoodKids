@@ -228,7 +228,7 @@ class ResultsWaitPage(WaitPage):
         else:
             self.group.set_payoffs_generic()
 
-    template_name = 'PublicGoodKids/CustomWaitPage.html'
+    template_name = 'public_good_kids/CustomWaitPage.html'
     body_text = 'boom'
 
 
