@@ -18,3 +18,10 @@ Clone or download this repository to your device. Jump inside the directory and 
 Open your browser and enter http://127.0.0.1:8000 in the address bar. You will have access to invitation links for participants in the same network.
 
 Remark: While this works for a small number of concurrent participants in a local network, you might want to consider hosting the application on a server. Read the [corresponding chapter in the oTree documentation](https://otree.readthedocs.io/en/latest/server/intro.html) for further details.
+
+# Troubleshooting
+
+If you get an error similar to
+>"ValueError: Missing staticfiles manifest entry for..."
+
+please run `python manage.py collectstatic`
