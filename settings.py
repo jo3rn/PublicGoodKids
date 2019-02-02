@@ -1,5 +1,5 @@
 import os
-from os import environ
+from os import getenv
 
 import dj_database_url
 from boto.mturk import qualification
@@ -11,15 +11,15 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # the environment variable OTREE_PRODUCTION controls whether Django runs in
 # DEBUG mode. If OTREE_PRODUCTION==1, then DEBUG=False
-if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
+if getenv('OTREE_PRODUCTION', 0) not in {None, '', '0'}:
     DEBUG = False
 else:
     DEBUG = True
 
-ADMIN_USERNAME = environ.get('OTREE_ADMIN_USERNAME')
+ADMIN_USERNAME = getenv('OTREE_ADMIN_USERNAME', 'admin')
 
 # for security, best to set admin password in an environment variable
-ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
+ADMIN_PASSWORD = getenv('OTREE_ADMIN_PASSWORD', 'admin')
 
 # don't share this with anybody.
 SECRET_KEY = '@vr=do=t*11pa!xwkhn!5$xv(o-t)w7y3bk=1^nr246wuxuqr0'
@@ -48,11 +48,11 @@ DATABASES = {
 # to DEMO. This will allow people to play in demo mode, but not access
 # the full admin interface.
 
-AUTH_LEVEL = environ.get('OTREE_AUTH_LEVEL')
+AUTH_LEVEL = getenv('OTREE_AUTH_LEVEL', 'STUDY')
 
 # setting for integration with AWS Mturk
-AWS_ACCESS_KEY_ID = environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_ACCESS_KEY_ID = getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = getenv('AWS_SECRET_ACCESS_KEY')
 
 
 # e.g. EUR, CAD, GBP, CHF, CNY, JPY
